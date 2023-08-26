@@ -16,6 +16,14 @@ const Todo = () => {
     }
   }
 
+  const handleRemoveTask = (position) => {
+    setTasks(oldTasks => {
+      const tempTasks = [...oldTasks]
+      tempTasks.splice(position, 1)
+      return tempTasks
+    });
+  }
+
   return (
     <>
       <form onSubmit={handleFormSubmit}>
@@ -26,7 +34,7 @@ const Todo = () => {
         {tasks.map((task, i) => (
           <li key={i}>
             {task}
-            {hasDeleteFeature ? <button>Remove</button> : null }
+            {hasDeleteFeature ? <button onClick={() => handleRemoveTask(i)}>Remove</button> : null }
           </li>
         ))}
       </ul>
