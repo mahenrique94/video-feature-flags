@@ -10,7 +10,9 @@ const Todo = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     if (inputRef.current.value.trim().length > 0) {
-      setTasks(oldTasks => [...oldTasks, inputRef.current.value])
+      const newTask = inputRef.current.value
+      setTasks(oldTasks => [...oldTasks, newTask])
+      inputRef.current.value = ''
     }
   }
 
